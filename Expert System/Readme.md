@@ -1,61 +1,54 @@
-# MedMNIST Breast MNIST Expert System
+Certainly! Here's the code explained in `readme.md` format:
 
-This code provides an expert system for classifying breast pathology using the MedMNIST Breast MNIST dataset. The expert system consists of the following steps:
+```markdown
+# MedMNIST Breast MNIST Dataset and Neural Network Model
 
-## Step 1: Instructions and Help
+This Python code allows you to explore the MedMNIST Breast MNIST dataset and train a neural network model for classification.
 
-Displays welcome message and provides an overview of the system.
+## Prerequisites
 
-## Step 2: Background Information
+- Python 3.x
+- PyTorch library (`torch`, `torchvision`)
+- NumPy library (`numpy`)
+- Matplotlib library (`matplotlib`)
+- Requests library (`requests`)
 
-Provides information about the MedMNIST Breast MNIST dataset, including image dimensions and class labels.
+## Installation
 
-## Step 3: Load Dataset
+1. Install Python 3.x from the official Python website: https://www.python.org/downloads/
+2. Install the required libraries by running the following commands:
+   ```
+   pip install torch torchvision numpy matplotlib requests
+   ```
 
-Downloads and loads the MedMNIST Breast MNIST dataset using the provided URL. It retrieves the training and testing images and labels.
+## Usage
 
-## Step 4: Preview Image Data
+1. Run the Python script `breast_mnist.py`.
+2. The script will provide instructions and background information about the MedMNIST Breast MNIST dataset.
+3. It will load the dataset from an online source.
+4. Preview and visualize sample images from the dataset.
+5. Generate a histogram of the dataset classes.
+6. Train a neural network model on the dataset.
+7. Evaluate the model's performance.
+8. Plot the training and testing accuracy over epochs.
+9. Demonstrate the use of an expert system style question-and-answer for patient follow-up.
 
-Displays a sample image from the training set along with its corresponding label. The image is shown in grayscale.
+## Code Explanation
 
-## Step 5: Montage of Images
+1. Import the necessary libraries: `torch`, `torchvision`, `torch.nn`, `torch.optim`, `torch.utils.data`, `transforms`, `numpy`, `matplotlib.pyplot`, `requests`, `io.BytesIO`.
+2. Print instructions and information about the dataset and the purpose of the system.
+3. Load the MedMNIST Breast MNIST dataset from an online source and store the data in variables.
+4. Preview and visualize a sample image from the dataset using `matplotlib.pyplot.imshow()`.
+5. Create a montage of multiple images from the dataset using `matplotlib.pyplot.imshow()` and `numpy.hstack()`.
+6. Generate a histogram of the dataset classes using `matplotlib.pyplot.hist()`.
+7. Split the dataset into training and testing sets and convert them into PyTorch `TensorDataset` objects.
+8. Define a multilayer perceptron (MLP) neural network model using `torch.nn.Module`.
+9. Implement functions to train and evaluate the model using `torch.optim.Adam` and `torch.nn.CrossEntropyLoss`.
+10. Train the model for a specified number of epochs, track the training and testing accuracy, and print the progress.
+11. Plot the training and testing accuracy over epochs using `matplotlib.pyplot.plot()`.
+12. Implement an expert system-style question-and-answer function to classify an input image as benign or malignant.
+13. Provide an example input image and use the expert system to classify it.
 
-Creates a montage of multiple images from the training set. It displays a specified number of images concatenated horizontally.
+```
 
-## Step 6: Generate Histogram of Dataset
-
-Creates a histogram of the dataset, showing the frequency of each class (benign and malignant) in the training set.
-
-## Step 7: View Separate RGB Color Channels
-
-Converts the sample grayscale image to RGB format and displays its separate red, green, and blue channels.
-
-## Step 8: Train Neural Network
-
-Prepares the dataset for training by reshaping the images and converting them to tensors. It creates data loaders for both the training and testing sets.
-
-Defines a Multi-Layer Perceptron (MLP) model using PyTorch's `nn.Module` class. The model consists of three fully connected layers.
-
-## Step 9: Train and Evaluate the Model
-
-Defines functions for training and evaluating the model. The training function performs forward and backward propagation, updates the model's parameters using the Adam optimizer, and calculates the training loss and accuracy.
-
-The evaluation function calculates the loss and accuracy on the testing set, without updating the model's parameters.
-
-## Step 10: Train the Model
-
-Trains the model for a specified number of epochs using the training and evaluation functions. Displays the training loss and testing accuracy for each epoch.
-
-## Step 11: Plot Training and Testing Accuracy
-
-Plots the training and testing accuracy over the epochs using Matplotlib.
-
-## Step 12: Expert System Style Q/A for Patient Follow-up
-
-Defines an expert system function that takes an input image and classifies the tumor as benign or malignant. It uses the trained model to make predictions based on the input image.
-
-Provides an example input image from the testing set and prints the expert system's classification result.
-
----
-
-**Note**: Make sure to install the required dependencies (such as PyTorch, NumPy, and Matplotlib) before running the code.
+Please note that the `readme.md` file is a markdown file format commonly used for documentation.
