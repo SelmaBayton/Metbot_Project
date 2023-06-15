@@ -1,6 +1,3 @@
-Certainly! Here's the code explained in `readme.md` format:
-
-```markdown
 # MedMNIST Breast MNIST Dataset and Neural Network Model
 
 This Python code allows you to explore the MedMNIST Breast MNIST dataset and train a neural network model for classification.
@@ -48,7 +45,3 @@ This Python code allows you to explore the MedMNIST Breast MNIST dataset and tra
 11. Plot the training and testing accuracy over epochs using `matplotlib.pyplot.plot()`.
 12. Implement an expert system-style question-and-answer function to classify an input image as benign or malignant.
 13. Provide an example input image and use the expert system to classify it.
-
-```
-
-Please note that the `readme.md` file is a markdown file format commonly used for documentation.
