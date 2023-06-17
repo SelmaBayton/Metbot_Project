@@ -1,7 +1,8 @@
 # Metbot_Project
 <img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/148539288/original/1baf1402c9d7d6575bf960f9c17d460b0d140248/automate-your-daily-tasks-via-python-script.png" width="250px">
 
-## Expert System: allows you to explore the MedMNIST Breast MNIST dataset and train a neural network model for classification.
+##
+Expert System: allows you to explore the MedMNIST Breast MNIST dataset and train a neural network model for classificatioon.
 
 ###
 Microscope Dashboard-Documentation and Help: Provide comprehensive documentation, tutorials, and contextual help within the AI dashboard. Offer user support channels, such as FAQs or a dedicated support team, to address user queries or issues.
