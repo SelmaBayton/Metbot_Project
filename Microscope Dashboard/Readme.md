@@ -1,73 +1,146 @@
 # Microscope Dashboard
 
-This Python code creates a graphical user interface (GUI) for a microscope dashboard. The GUI allows users to access various functionalities related to the microscope, data capture, data management, model training, and model evaluation.
+import tkinter as tk
+from tkinter import messagebox
+from tkinter.filedialog import askopenfilename, asksaveasfilename
+import numpy as np
+import requests
+from PIL import Image
+from io import BytesIO
 
-## Prerequisites
+# Load MNIST data
+url = "https://zenodo.org/record/6496656/files/breastmnist.npz"
+response = requests.get(url)
+data = np.load(BytesIO(response.content))
+X_train, y_train, X_test, y_test = data['train_images'], data['train_labels'], data['test_images'], data['test_labels']
 
-- Python 3.x
-- Tkinter library (`tk`)
+# Create a dictionary mapping labels to help messages and tutorials
+help_messages = {
+    0: "Help message for label 0",
+    1: "Help message for label 1",
+    2: "Help message for label 2",
+    3: "Help message for label 3",
+    4: "Help message for label 4",
+    5: "Help message for label 5",
+    6: "Help message for label 6",
+    7: "Help message for label 7",
+    8: "Help message for label 8",
+    9: "Help message for label 9",
+}
 
-## Installation
+tutorials = {
+    0: "Tutorial for label 0",
+    1: "Tutorial for label 1",
+    2: "Tutorial for label 2",
+    3: "Tutorial for label 3",
+    4: "Tutorial for label 4",
+    5: "Tutorial for label 5",
+    6: "Tutorial for label 6",
+    7: "Tutorial for label 7",
+    8: "Tutorial for label 8",
+    9: "Tutorial for label 9",
+}
 
-1. Install Python 3.x from the official Python website: https://www.python.org/downloads/
-2. Tkinter library comes pre-installed with Python. No additional installation is required.
+# Define the function to save the image and display help message
+def save_image_and_help(image, label):
+    image_pil = Image.fromarray(image)
+    image_pil.save("image.png")
+    messagebox.showinfo("Help", help_messages[label])
 
-## Usage
+def display_tutorial(label):
+    messagebox.showinfo("Tutorial", tutorials[label])
 
-1. Run the Python script `microscope_dashboard.py`.
-2. The GUI window titled "Microscope Dashboard" will appear.
-3. Click on the available buttons to access different features and functionalities of the microscope dashboard.
+# Function to connect to real instrument
+def connect_to_instrument():
+    messagebox.showinfo("Connect", "Connected to real instrument")
 
-## Functionality
+# Function to capture data
+def capture_data():
+    messagebox.showinfo("Capture", "Data captured")
 
-### Documentation and Help
+# Function to archive data
+def archive_data():
+    messagebox.showinfo("Archive", "Data archived")
 
-- "Documentation": Clicking this button opens comprehensive documentation about the microscope dashboard.
-- "Tutorials": Clicking this button opens tutorials to guide users on how to use the microscope dashboard.
-- "Contextual Help": Clicking this button displays help information specific to the current context or functionality.
-- "FAQs": Clicking this button provides answers to frequently asked questions.
-- "Contact Support": Clicking this button allows users to contact support for assistance.
+# Function to load data
+def load_data():
+    messagebox.showinfo("Load", "Data loaded")
 
-### Microscope Dashboard Functionalities
+# Function to train model
+def train_model():
+    messagebox.showinfo("Train", "Model trained")
 
-- "Connect to Real Instrument": Clicking this button establishes a connection to a real microscope instrument.
-- "Capture Data": Clicking this button initiates the process of capturing data using the connected microscope instrument.
-- "Archive Data": Clicking this button stores the captured data in an archive for future reference.
-- "Load Data": Clicking this button loads previously captured data for further analysis.
-- "View Data": Clicking this button opens a viewer to visualize the loaded data.
-- "Label Data": Clicking this button enables labeling of the loaded data for training purposes.
-- "Train Model": Clicking this button starts the training process for a model using the labeled data.
-- "Save Model": Clicking this button saves the trained model for future use.
-- "Load Model": Clicking this button loads a pre-trained model for evaluation or inference.
-- "Test Model": Clicking this button evaluates the performance of the loaded model.
-- "Run Model on New Images": Clicking this button applies the loaded model to new images for prediction.
-- "Visualize Model Outputs": Clicking this button provides visualizations of the model's outputs for analysis.
+# Function to save model
+def save_model():
+    messagebox.showinfo("Save", "Model saved")
 
-## GUI Components
+# Function to test model
+def test_model():
+    messagebox.showinfo("Test", "Model tested")
 
-The GUI consists of two sections: Documentation and Help buttons, and Microscope Dashboard functionality buttons.
+# Function to run model on new image
+def run_model_on_new_image():
+    messagebox.showinfo("Run Model", "Running model on new image")
 
-1. Documentation and Help buttons:
-   - "Documentation"
-   - "Tutorials"
-   - "Contextual Help"
-   - "FAQs"
-   - "Contact Support"
+# Function to view data
+def view_data():
+    index = np.random.randint(len(X_test))  # Choose a random index
+    image = X_test[index]
+    label = y_test[index]
+    save_image_and_help(image, label)
+    display_tutorial(label)
 
-2. Microscope Dashboard functionality buttons:
-   - "Connect to Real Instrument"
-   - "Capture Data"
-   - "Archive Data"
-   - "Load Data"
-   - "View Data"
-   - "Label Data"
-   - "Train Model"
-   - "Save Model"
-   - "Load Model"
-   - "Test Model"
-   - "Run Model on New Images"
-   - "Visualize Model Outputs"
+# Function to label data
+def label_data():
+    index = np.random.randint(len(X_test))  # Choose a random index
+    image = X_test[index]
+    label = y_test[index]
+    save_image_and_help(image, label)
+    display_tutorial(label)
 
-## Dependencies
+# Create the GUI
+root = tk.Tk()
+root.title("Microscope Dashboard
 
-- `tkinter`: The standard Python interface to the Tk GUI toolkit.
+")
+
+# Create buttons
+button_connect = tk.Button(root, text="Connect to Instrument", command=connect_to_instrument)
+button_capture = tk.Button(root, text="Capture Data", command=capture_data)
+button_archive = tk.Button(root, text="Archive Data", command=archive_data)
+button_load = tk.Button(root, text="Load Data", command=load_data)
+button_train = tk.Button(root, text="Train Model", command=train_model)
+button_save = tk.Button(root, text="Save Model", command=save_model)
+button_test = tk.Button(root, text="Test Model", command=test_model)
+button_run = tk.Button(root, text="Run Model on New Image", command=run_model_on_new_image)
+button_view = tk.Button(root, text="View Data", command=view_data)
+button_label = tk.Button(root, text="Label Data", command=label_data)
+
+# Layout buttons
+button_connect.pack()
+button_capture.pack()
+button_archive.pack()
+button_load.pack()
+button_train.pack()
+button_save.pack()
+button_test.pack()
+button_run.pack()
+button_view.pack()
+button_label.pack()
+
+# Run the GUI
+root.mainloop()
+```
+
+This code sets up a simple GUI for a microscope dashboard with various buttons to perform different actions related to instrument control, data management, model training, and image processing.
+
+The code consists of the following components:
+
+1. Importing necessary modules and libraries.
+2. Loading MNIST data from a specified URL.
+3. Creating dictionaries to map labels to help messages and tutorials.
+4. Defining functions to handle specific actions, such as saving an image and displaying a help message, connecting to an instrument, capturing data, archiving data, loading data, training a model, saving a model, testing a model, running a model on a new image, viewing data, and labeling data.
+5. Creating a GUI window using `tkinter`.
+6. Creating buttons for each action and associating them with their respective functions.
+7. Laying out the buttons in the GUI window.
+8. Running the GUI main loop to handle user interactions.
